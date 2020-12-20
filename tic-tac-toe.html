@@ -1,0 +1,265 @@
+<html>
+	<head>
+		<title>Tic Tac Toe Game</title>
+		<script src="jquery.js"></script>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css"/>
+		<style>
+			body{
+				background:#fffdd0;
+			}
+			h1{
+				padding-bottom:45px;
+			}
+			td{
+				width:65px;
+				height:65px;
+				text-align:center;
+				cursor:pointer;
+				font-size:35px;
+			}
+			#zero{
+				border-right:3px solid #000;
+				border-bottom:3px solid #000;
+			}
+			#one{
+				border-bottom:3px solid #000;
+			}
+			#two{
+				border-left:3px solid #000;
+				border-bottom:3px solid #000;
+			}
+			#three{
+				border-right:3px solid #000;
+			}
+			#five{
+				border-left:3px solid #000;
+			}
+			#six{
+				border-top:3px solid #000;
+				border-right:3px solid #000;
+			}
+			#seven{
+				border-top:3px solid #000;
+			}
+			#eight{
+				border-left:3px solid #000;
+				border-top:3px solid #000;
+			}
+			.score{
+				padding-top:35px;
+				text-align:center;
+				font-size:25px;
+			}
+			td:hover{
+				background:#fff;
+			}
+			.p1{
+				border:1px solid #000;
+				background:#fff;
+			}
+			.p2{
+				border:0px solid #000;
+				background:#fffdd0;
+			}
+			#uhi{
+				display:none;
+			}
+			#winp1,#winp2{
+				color:#0f0;
+				display:none;
+			}
+			#losp1,#losp2{
+				color:#f00;
+				display:none;
+			}
+			.res{
+				padding-top:20px;
+			}
+			.resb{
+				width:60%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 align="center">Welcome to the Tic Tac Toe Game</h1>
+			<table border="0" align="center">
+				<tr>
+					<td id="zero"></td>
+					<td id="one"></td>
+					<td id="two"></td>
+				</tr>
+				<tr>
+					<td id="three"></td>
+					<td id="four"></td>
+					<td id="five"></td>
+				</tr>
+				<tr>
+					<td id="six"></td>
+					<td id="seven"></td>
+					<td id="eight"></td>
+				</tr>
+			</table>
+			<div class="row score">
+				<div class="col-sm-6 p1">
+					<span>Player One turn <b>X</b></span><br/>
+					<span id="winp1">Winner</span>
+					<span id="losp1">Looser</span>
+				</div>
+				<div class="col-sm-6 p2">
+					<span>Player Two turn <b>O</b></span><br/>
+					<span id="winp2">Winner</span>
+					<span id="losp2">Looser</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8 res" align="center">
+					<input type="button" value="Reset" class="btn btn-lg btn-info resb"/>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+			<input type="text" id="uhi" value="p1"/>
+		</div>
+		<script>
+			function merapri(){
+				var a = $('#uhi').val();
+				var b = $(this).text();
+				if(b=="O"||b=="X"){}
+				else{
+					if(a=="p1"){
+						$(this).text("X");
+						$('#uhi').val("p2");
+						$('.p1').css({"border":"0px solid #000","background":"#fffdd0"});
+						$('.p2').css({"border":"1px solid #000","background":"#fff"});
+						var d0 = $('#zero').text();
+						var d1 = $('#one').text();
+						var d2 = $('#two').text();
+						var d3 = $('#three').text();
+						var d4 = $('#four').text();
+						var d5 = $('#five').text();
+						var d6 = $('#six').text();
+						var d7 = $('#seven').text();
+						var d8 = $('#eight').text();
+						if(d0=="X"&&d1=="X"&&d2=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+						else if(d3=="X"&&d4=="X"&&d5=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+						else if(d6=="X"&&d7=="X"&&d8=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+						else if(d0=="X"&&d3=="X"&&d6=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+						else if(d1=="X"&&d4=="X"&&d7=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+						else if(d2=="X"&&d5=="X"&&d8=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+						else if(d0=="X"&&d4=="X"&&d8=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+						else if(d2=="X"&&d4=="X"&&d6=="X"){
+							$('#winp1').css("display","block");
+							$('#losp2').css("display","block");
+							$('td').off("click");
+						}
+					}
+					else{
+						$(this).text("O");
+						$('#uhi').val("p1");
+						$('.p2').css({"border":"0px solid #000","background":"#fffdd0"});
+						$('.p1').css({"border":"1px solid #000","background":"#fff"});
+						var d0 = $('#zero').text();
+						var d1 = $('#one').text();
+						var d2 = $('#two').text();
+						var d3 = $('#three').text();
+						var d4 = $('#four').text();
+						var d5 = $('#five').text();
+						var d6 = $('#six').text();
+						var d7 = $('#seven').text();
+						var d8 = $('#eight').text();
+						if(d0=="O"&&d1=="O"&&d2=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+						else if(d3=="O"&&d4=="O"&&d5=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+						else if(d6=="O"&&d7=="O"&&d8=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+						else if(d0=="O"&&d3=="O"&&d6=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+						else if(d1=="O"&&d4=="O"&&d7=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+						else if(d2=="O"&&d5=="O"&&d8=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+						else if(d0=="O"&&d4=="O"&&d8=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+						else if(d2=="O"&&d4=="O"&&d6=="O"){
+							$('#winp2').css("display","block");
+							$('#losp1').css("display","block");
+							$('td').off("click");
+						}
+					}
+				}
+			}
+			$('td').click(merapri);
+			$('.resb').click(function (){
+				$('#zero').text("");
+				$('#one').text("");
+				$('#two').text("");
+				$('#three').text("");
+				$('#four').text("");
+				$('#five').text("");
+				$('#six').text("");
+				$('#seven').text("");
+				$('#eight').text("");
+				$('#winp1').css("display","none");
+				$('#winp2').css("display","none");
+				$('#losp1').css("display","none");
+				$('#losp2').css("display","none");
+				$('#uhi').val("p1");
+				$('.p1').css({"border":"1px solid #000","background":"#fff"});
+				$('.p2').css({"border":"0px solid #000","background":"#fffdd0"});
+				$('td').on("click",merapri);
+			});
+		</script>
+	</body>
+</html>
